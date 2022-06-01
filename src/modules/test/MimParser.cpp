@@ -58,8 +58,12 @@ pMimObjects MimParser::ParseMim(std::string path)
                     }
                     else if (json_object_has_value_of_type(jsonField, "schema", JSONObject))
                     {
+                        // TODO: Turn into recursive function to support embedded objects
+
                         JSON_Object *jsonSchema = json_object_get_object(jsonField, "schema");
 
+                        // TODO: Add type check -- need map + array support
+                        // TODO: It doesn't necessarily have a valueSchema, but if it does, it has supported values! But there are not necessarily supported values.
                         mimField = {
                             json_object_get_string(jsonField, "name"),
                             json_object_get_string(jsonSchema, "valueSchema"),

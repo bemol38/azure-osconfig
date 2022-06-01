@@ -25,8 +25,8 @@ void RecipeInvoker::TestBody()
             ASSERT_NE(nullptr, root_value);
             JSON_Object *jsonObject = json_value_get_object(root_value);
 
-            EXPECT_NE(0, m_recipe.m_mimObjects->size());
-            EXPECT_NE(0, m_recipe.m_mimObjects->at(m_recipe.m_componentName)->size());
+            EXPECT_NE(0, m_recipe.m_mimObjects->size()) << "Invalid MIM JSON!";
+            EXPECT_NE(0, m_recipe.m_mimObjects->at(m_recipe.m_componentName)->size()) << "No MimObjects for " << m_recipe.m_componentName << "!";
             auto map = m_recipe.m_mimObjects->at(m_recipe.m_componentName)->at(m_recipe.m_objectName);
 
             // Validate fields + supported values
